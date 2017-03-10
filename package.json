@@ -1,0 +1,22 @@
+{
+  "name": "practice-react",
+  "version": "1.0.0",
+  "description": "practice react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iSyn/practice-react.git"
+  },
+  "author": "Synclair Wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iSyn/practice-react/issues"
+  },
+  "homepage": "https://github.com/iSyn/practice-react#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
