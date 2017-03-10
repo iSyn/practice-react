@@ -1,3 +1,36 @@
+var GreeterMessage = React.createClass({
+  render: function() {
+    var name = this.props.name;
+    var message = this.props.message;
+    return(
+      <div>
+        <h1>Hello {name}!</h1>
+        <p>{message}</p>
+      </div>
+    )
+  }
+})
+
+var GreeterForm = React.createClass({
+  onFormSubmit: function(e) {
+    e.preventDefault();
+    var name = this.refs.inputName.value;
+    if (name.length > 0) {
+      this.refs.inputName.value = '';
+      this.props.onNewName(name)
+    }
+  },
+
+  render: function() {
+    return(
+      <form onSubmit={this.onFormSubmit}>
+        <input type="text" ref='inputName'/>
+        <button>Set New Name</button>
+      </form>
+    )
+  }
+})
+
 var Greeter = React.createClass({
   getDefaultProps: function() {
     return {
@@ -12,19 +45,10 @@ var Greeter = React.createClass({
     }
   },
 
-  onButtonClick: function(e) {
-    e.preventDefault();
-
-    var nameRef = this.refs.inputName
-
-    var name = nameRef.value;
-    nameRef.value = '';
-
-    if (typeof name === 'string' && name.length > 0) {
-      this.setState({
-        name: name
-      })
-    }
+  handleNewName: function(name) {
+    this.setState({
+      name: name
+    });
   },
 
   render: function() {
@@ -33,14 +57,8 @@ var Greeter = React.createClass({
 
     return(
       <div>
-        <h1>Hello {name}!</h1>
-        <p>{message}</p>
-
-        <form onSubmit={this.onButtonClick}>
-          <input type="text" ref='inputName'/>
-          <button>Set New Name</button>
-        </form>
-
+        <GreeterMessage name={name} message={message}/>
+        <GreeterForm onNewName={this.handleNewName}/>
       </div>
     );
   }
@@ -51,7 +69,6 @@ var firstName = 'Synclair'
 ReactDOM.render(
   <Greeter
     name={firstName}
-    message='Message from props'
     />,
   document.getElementById('app')
 );
