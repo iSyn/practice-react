@@ -24935,7 +24935,26 @@
 	var Weather = React.createClass({
 	  displayName: 'Weather',
 
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      location: 'Miami',
+	      temp: 88
+	    };
+	  },
+
+	  handleSearch: function handleSearch(location) {
+	    // this.setState({
+	    //   location: location,
+	    //   temp: 23
+	    // })
+	  },
+
 	  render: function render() {
+	    var _state = this.state,
+	        temp = _state.temp,
+	        location = _state.location;
+
 	    return React.createElement(
 	      'div',
 	      null,
@@ -24944,8 +24963,8 @@
 	        null,
 	        'Get Weather'
 	      ),
-	      React.createElement(WeatherForm, null),
-	      React.createElement(WeatherMessage, null)
+	      React.createElement(WeatherForm, { onSearch: this.handleSearch }),
+	      React.createElement(WeatherMessage, { location: location, temp: temp })
 	    );
 	  }
 	});
@@ -24963,16 +24982,26 @@
 	var WeatherForm = React.createClass({
 	  displayName: 'WeatherForm',
 
+
+	  onFormSubmit: function onFormSubmit(e) {
+	    e.preventDefault();
+	    // sets the variable location equal to the value of the input
+	    var location = this.refs.location.value;
+
+	    if (location.length > 0) {
+	      this.refs.location.value = '';
+	      this.props.onSearch(location);
+	    }
+	  },
+
 	  render: function render() {
 	    return React.createElement(
 	      'div',
 	      null,
 	      React.createElement(
 	        'form',
-	        null,
-	        React.createElement('input', { type: 'text', placeholder: 'Enter City Name' }),
-	        ' ',
-	        React.createElement('br', null),
+	        { onSubmit: this.onFormSubmit },
+	        React.createElement('input', { type: 'text', ref: 'location', placeholder: 'Enter City Name' }),
 	        React.createElement(
 	          'button',
 	          null,
@@ -24997,13 +25026,21 @@
 	  displayName: 'WeatherMessage',
 
 	  render: function render() {
+	    var _props = this.props,
+	        temp = _props.temp,
+	        location = _props.location;
+
+
 	    return React.createElement(
 	      'div',
 	      null,
 	      React.createElement(
 	        'h3',
 	        null,
-	        'This is the WeatherMessage Component'
+	        'It is ',
+	        temp,
+	        ' in ',
+	        location
 	      )
 	    );
 	  }
