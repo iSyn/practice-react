@@ -1,1 +1,1 @@
-# practice-react
+#React Weather Application
