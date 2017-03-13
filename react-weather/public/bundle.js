@@ -24946,6 +24946,7 @@
 	  handleSearch: function handleSearch(location) {
 	    var that = this;
 
+	    debugger;
 	    this.setState({
 	      isLoading: true
 	    });
