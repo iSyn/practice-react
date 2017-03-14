@@ -21,13 +21,17 @@ var Weather = React.createClass({
       errorMessage: undefined
     })
 
-    openWeatherMap.getTemp(location).then(function(temp) {
+    openWeatherMap.getTemp(location).then(function(res) {
       // 'this' is in a function so we can use 'this'
       // So you create a variable up top binding 'this' to 'that'
+      console.log(res)
       that.setState({
         isLoading: false,
         location: location,
-        temp: temp
+        temp: res.data.main.temp,
+        low: res.data.main.temp_min,
+        max: res.data.main.temp_max,
+        weather: res.data.weather[0].main
       })
     }, function(err) {
       console.log('error: ', err)
@@ -39,13 +43,13 @@ var Weather = React.createClass({
   },
 
   render: function() {
-    var {isLoading, temp, location, errorMessage} = this.state
+    var {isLoading, temp, location, low, max, weather, errorMessage} = this.state
 
     function renderMessage() {
       if (isLoading) {
         return <h3 className='text-center'>Fetching the weather...</h3>
       } else if (temp && location) {
-        return <WeatherMessage location={location} temp={temp}/>
+        return <WeatherMessage location={location} temp={temp} low={low} max={max} weather={weather}/>
       }
     }
 
@@ -59,7 +63,7 @@ var Weather = React.createClass({
 
     return(
       <div>
-        <h1 className='text-center'>Get Weather</h1>
+        <h1 className='text-center page-title'>Get Weather</h1>
         <WeatherForm onSearch={this.handleSearch}/>
         {renderMessage()}
         {renderError()}

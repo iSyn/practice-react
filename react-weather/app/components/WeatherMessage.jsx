@@ -13,10 +13,12 @@ var React  = require('react')
 //   }
 // })
 
-var WeatherMessage = ({temp, location}) => {
+var WeatherMessage = ({temp, location, low, max, weather}) => {
   return(
     <div>
       <h3 className='text-center'>It is {temp} in {location}</h3>
+      <p className='text-center'>Lowest is {low} and highest is {max} <br/>{weather} </p>
+
     </div>
   )
 }
