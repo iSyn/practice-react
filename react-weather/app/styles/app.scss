@@ -4,8 +4,25 @@ $title-color: darkslateblue;
 .page-title {
   margin: $space-large 0;
   color: $title-color;
+  font-size: 5rem;
 }
 
 input[type=search] {
   box-shadow: none;
+}
+
+.main-search, .main-button {
+  padding: 25px;
+  font-size: 20px;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }

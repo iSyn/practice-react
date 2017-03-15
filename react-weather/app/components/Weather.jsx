@@ -23,7 +23,7 @@ var Weather = React.createClass({
       temp: undefined,
       low: undefined,
       max: undefined,
-      weather: undefined
+      weather: undefined,
     })
 
     openWeatherMap.getTemp(location).then(function(res) {
@@ -36,7 +36,7 @@ var Weather = React.createClass({
         temp: res.data.main.temp,
         low: res.data.main.temp_min,
         max: res.data.main.temp_max,
-        weather: res.data.weather[0].main
+        weather: res.data.weather[0].main,
       })
     }, function(err) {
       console.log('error: ', err)
@@ -86,7 +86,7 @@ var Weather = React.createClass({
 
     return(
       <div>
-        <h1 className='text-center page-title'>Get Weather</h1>
+        <h1 className='text-center page-title'>Basic Weather App</h1>
         <WeatherForm onSearch={this.handleSearch}/>
         {renderMessage()}
         {renderError()}
