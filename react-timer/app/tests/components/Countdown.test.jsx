@@ -23,13 +23,33 @@ describe('Countdown', () => {
         done()
       }, 1001)
     })
-  })
-  it('should not set count less than zero', (done) => {
-    var countdown = TestUtils.renderIntoDocument(<Countdown/>)
-    countdown.handleSetCountdown(1)
-    setTimeout(() => {
-      expect(countdown.state.count).toBe(0)
-      done()
-    }, 2000)
+    it('should not set count less than zero', (done) => {
+      var countdown = TestUtils.renderIntoDocument(<Countdown/>)
+      countdown.handleSetCountdown(1)
+      setTimeout(() => {
+        expect(countdown.state.count).toBe(0)
+        done()
+      }, 2000)
+    })
+    it('should pause countdown on paused status', (done) => {
+      var countdown = TestUtils.renderIntoDocument(<Countdown/>)
+      countdown.handleSetCountdown(2)
+      countdown.handleStatusChange('paused')
+      setTimeout(() => {
+        expect(countdown.state.count).toBe(2)
+        expect(countdown.state.countdownStatus).toBe('paused')
+        done()
+      },1001)
+    })
+    it('should reset stop  on stopped status', (done) => {
+      var countdown = TestUtils.renderIntoDocument(<Countdown/>)
+      countdown.handleSetCountdown(2)
+      countdown.handleStatusChange('stopped')
+      setTimeout(() => {
+        expect(countdown.state.count).toBe(0)
+        expect(countdown.state.countdownStatus).toBe('stopped')
+        done()
+      },1001)
+    })
   })
 })
