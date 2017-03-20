@@ -6,3 +6,5 @@
 
 [React Timer App](http://basic-react-timer-app.herokuapp.com/#/?_k=16jfye) - Your basic timer application built on React.
 
+All code in respective folders.
+
