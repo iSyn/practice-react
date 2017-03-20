@@ -1,1 +1,1 @@
-# practice-react
+# Boilerplate React App
