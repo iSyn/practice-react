@@ -8,10 +8,10 @@ $(document).foundation()
 // Load CSS
 require('style!css!sass!applicationStyles')
 
-ReactDOM.render(
-  <p>React Boilerplate</p>,
-  document.getElementById('app')
-);
+// ReactDOM.render(
+//   <p>React Boilerplate</p>,
+//   document.getElementById('app')
+// );
 
 require('./redux-todo-example.jsx')
 // require('./redux-example')
