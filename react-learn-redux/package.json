@@ -1,11 +1,11 @@
 {
-  "name": "boilerplate2",
+  "name": "boilerplate",
   "version": "1.0.0",
   "description": "practice react",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "karma start",
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
