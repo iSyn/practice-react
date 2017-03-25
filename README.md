@@ -6,7 +6,7 @@
 
 [React Timer App](http://basic-react-timer-app.herokuapp.com/) - Your basic timer application.
 
-[React Todo App](http://basic-react-todo-app.herokuapp.com/) - A simple todo application that keeps track of your todos with local storage.
+[React Redux Todo App](http://basic-react-todo-app.herokuapp.com/) - A simple todo application that keeps track of your todos with local storage.
 
 All code in respective folders.
 
