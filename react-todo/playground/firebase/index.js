@@ -22,17 +22,32 @@ firebaseRef.set({
     name: 'Synclair',
     age: 20
   }
-}).then(() => {
-  console.log('set worked!')
-}, (e) => {
-  console.log('set failed')
 })
 
+var notesRef = firebaseRef.child('notes')
 
-firebaseRef.child('user').set({
-  name: 'Syn'
+notesRef.on('child_added', (snapshot) => {
+  console.log('child added', snapshot.key, snapshot.val())
 })
 
-firebaseRef.child('app').set({
-  name: 'Todo Application'
+notesRef.on('child_changed', (snapshot) => {
+  console.log('child changed', snapshot.key, snapshot.val())
+})
+
+notesRef.on('child_removed', (snapshot) => {
+  console.log('child removed', snapshot.key, snapshot.val())
+})
+
+var newNoteRef = notesRef.push({
+  text: 'Walk the dog!'
+})
+
+var todosRef = firebaseRef.child('todos')
+
+todosRef.on('child_added', (snapshot) => {
+  console.log('todo added', snapshot.key, snapshot.val())
+})
+
+var newTodoRef = todosRef.push({
+  text: 'EAT BUTT'
 })
