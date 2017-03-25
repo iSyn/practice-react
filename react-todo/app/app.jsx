@@ -12,10 +12,6 @@ store.subscribe(() => {
   console.log('New State: ', store.getState())
 })
 
-store.dispatch(actions.addTodo('Clean dirty butt'))
-store.dispatch(actions.setSearchText('butt'))
-store.dispatch(actions.toggleShowCompleted())
-
 // Load foundation
 $(document).foundation()
 
