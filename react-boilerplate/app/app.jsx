@@ -12,3 +12,11 @@ ReactDOM.render(
   <h1>React Boilerplate</h1>,
   document.getElementById('app')
 );
+
+// <Router history={hashHistory}>
+//   <Route path='/' component={component-name}>
+//     <IndexRoute component={component-name}/>
+//     <Route path='about' component={component-name} />
+//   </Route>
+// </Router>
+
